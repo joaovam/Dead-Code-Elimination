@@ -3,7 +3,7 @@
 LLVM_INSTALL_DIR="/usr/lib/llvm-8/build"
 
 mkdir -p build
-BUILD_DIR=$(realpath -L ./build)
+BUILD_DIR=$(realpath -L ./build/)
 
 cc=/usr/bin/clang
 cxx=/usr/bin/clang++
