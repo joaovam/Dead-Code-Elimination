@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-LLVM_INSTALL_DIR="$HOME/llvm-8/build"
+LLVM_INSTALL_DIR="/usr/lib/llvm-8/build"
 
 mkdir -p build
 BUILD_DIR=$(realpath -L ./build)
 
-cc=$LLVM_INSTALL_DIR/bin/clang
-cxx=$LLVM_INSTALL_DIR/bin/clang++
+cc=usr/bin/clang
+cxx=usr/bin/clang++
+
+echo "$BUILD_DIR"
 
 cmake -S . -B $BUILD_DIR -G "Unix Makefiles"              \
     -DLLVM_DIR=${LLVM_INSTALL_DIR}/lib/cmake/llvm   \
