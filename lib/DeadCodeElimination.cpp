@@ -1,6 +1,19 @@
 #include "DeadCodeElimination.h"
 #include "llvm/Transforms/Utils/Local.h"
 #include "llvm/IR/Instruction.h"
+#include "llvm/IR/PassManager.h"
+#include "llvm/IR/Function.h"
+#include "llvm/IR/Constants.h"
+#include "llvm/IR/Instructions.h"
+#include "llvm/IR/InstIterator.h"
+#include "llvm/IR/BasicBlock.h"
+#include "llvm/IR/InstrTypes.h"
+#include "llvm/Transforms/Utils/BasicBlockUtils.h"
+#include "llvm/ADT/Statistic.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/Support/Debug.h"
+#include "llvm/Transforms/Utils/Local.h"
+#include "llvm/Transforms/InstCombine/InstCombineWorklist.h"
 
 //RecursivelyDeleteTriviallyDeadInstructions self explainatory
 
@@ -163,5 +176,6 @@ void DeadCodeElimination::getAnalysisUsage(AnalysisUsage &AU) const {
 
 
 char DeadCodeElimination::ID = 0;
+
 static RegisterPass<DeadCodeElimination> X("dead-code-elimination",
                                 "tool for implementing dead code elimination using range analysis");
