@@ -29,6 +29,7 @@ class DeadCodeElimination: public FunctionPass{
         NONE
     };
     static char ID;
+    DeadCodeAnalysis() : FunctionPass(ID) {}
     virtual ~DeadCodeElimination(){}
     virtual bool runOnFunction(Function &F);
     virtual void getAnalysisUsage(AnalysisUsage &AU)const;
