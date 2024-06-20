@@ -23,9 +23,9 @@ else
 
     $CLANG -Xclang -disable-O0-optnone -S -emit-llvm $1 -o $INPUT_IR
     $OPT -instnamer -mem2reg -break-crit-edges -S $INPUT_IR -o $INPUT_IR
-    $OPT -load build/lib/libDeadCodeElimination.so -vssa -S $INPUT_IR -o $INPUT_IR
+    $OPT -load $DCE_LIB -vssa -S $INPUT_IR -o $INPUT_IR
     $OPT -dot-cfg $INPUT_IR -cfg-dot-filename-prefix=./input/before -disable-output
 
-    $OPT -stats -load build/lib/libDeadCodeElimination.so -dead-code-elimination -S $INPUT_IR -o $INPUT_IR
+    $OPT -stats -load $DCE_LIB -dead-code-elimination -S $INPUT_IR -o $INPUT_IR
     $OPT -dot-cfg $INPUT_IR -cfg-dot-filename-prefix=./input/after -disable-output
 fi
