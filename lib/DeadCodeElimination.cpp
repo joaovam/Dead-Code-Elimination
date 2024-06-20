@@ -35,18 +35,18 @@ DeadCodeElimination::PathToDelete DeadCodeElimination::solveICmpInstruction(ICmp
   switch (I->getPredicate()){
 
     case CmpInst::ICMP_EQ:  ///< equal
-      if(r1.getLower().eq(r1.getUpper()) && r2.getLower().eq(r2.getUpper()) && r1.getLower().eq(r2.getLower())){//always false
-        //errs() << r1.getLower()""
-        del = PathToDelete::TRUE;
-      }else if((r1.getLower().eq(r1.getUpper()) && r2.getLower().eq(r2.getUpper()) && r1.getLower().ne(r2.getLower()))){//always true
-      del = PathToDelete::FALSE;
+      if(r1.getLower().eq(r2.getLower()) && r2.getUpper().eq(r2.getUpper()) && r1.getLower().eq(r1.getUpper())){//always true
+        
+        del = PathToDelete::FALSE;
+      }else if(r1.getUpper().slt(r2.getLower()) || r1.getLower().sgt(r2.getUpper())){//always true
+      del = PathToDelete::TRUE;
       }
     break;
     case CmpInst::ICMP_NE:  ///< not equal
       if(r1.getLower().eq(r1.getUpper()) && r2.getLower().eq(r2.getUpper()) && r1.getLower().eq(r2.getLower())){//always false
         //errs() << r1.getLower()""
         del = PathToDelete::FALSE;
-      }else if((r1.getLower().eq(r1.getUpper()) && r2.getLower().eq(r2.getUpper()) && r1.getLower().ne(r2.getLower()))){//always true
+      }else if(r1.getUpper().slt(r2.getLower()) || r1.getLower().sgt(r2.getUpper())){//always true
       del = PathToDelete::TRUE;
       }
     break;
