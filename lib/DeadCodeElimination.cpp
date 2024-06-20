@@ -164,6 +164,7 @@ bool DeadCodeElimination::runOnFunction(Function &f){//returns if anything chang
       }
     }
     deleteInstructions();
+    removeUnreachableBlocks(f);
     return false;
 
 }
