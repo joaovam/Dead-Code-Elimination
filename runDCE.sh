@@ -11,7 +11,7 @@ else
 
     CLANG=$LLVM_INSTALL_DIR/Release/bin/clang
     OPT=$LLVM_INSTALL_DIR/Release/bin/opt
-    DCE_LIB="/lib/DeadCodeElimination${suffix}"
+    DCE_LIB="lib/DeadCodeElimination${suffix}"
 
     file_name=$1
     base_name=$(basename $1 .c)
