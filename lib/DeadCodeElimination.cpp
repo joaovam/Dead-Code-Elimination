@@ -132,10 +132,10 @@ bool DeadCodeElimination::runOnFunction(Function &f){//returns if anything chang
     
     for(Function::iterator bb = f.begin(),bbEnd = f.end();bb!=bbEnd; ++bb){
       for(BasicBlock::iterator I = bb->begin(), IEnd = bb->end(); I != IEnd;++I){
-        if( auto bI = dyn_cast_or_null<BranchInst>(I)){//we have a branch inst
+        if( auto bI = dyn_cast<BranchInst>(I)){//we have a branch inst
 
           if(bI->isConditional()){//conditionals can
-            if(auto icmp = dyn_cast_or_null<ICmpInst>(bI->getCondition())){
+            if(auto icmp = dyn_cast<ICmpInst>(bI->getCondition())){
               auto del = solveICmpInstruction(icmp, ra);
               switch (del)
               {

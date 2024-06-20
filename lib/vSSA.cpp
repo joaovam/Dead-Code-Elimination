@@ -9,10 +9,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-
+#define DEBUG_TYPE "vssa"
 
 #include "vSSA.h"
-#define DEBUG_TYPE "vssa"
 
 using namespace llvm;
 
