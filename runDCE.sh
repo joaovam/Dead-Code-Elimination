@@ -18,11 +18,11 @@ else
     program_ll="$base_name.ll"
     
 
-    $CLANG -Xclang -disable-O0-optnone -S -emit-llvm $1 -o $INPUT_IR
-    $OPT -instnamer -mem2reg -break-crit-edges -S $INPUT_IR -o $INPUT_IR
-    $OPT -load $DCE_LIB -vssa -S $INPUT_IR -o $INPUT_IR
-    $OPT -dot-cfg $INPUT_IR -cfg-dot-filename-prefix=./input/before -disable-output
+    $CLANG -Xclang -disable-O0-optnone -S -emit-llvm $1 -o $program_ll
+    $OPT -instnamer -mem2reg -break-crit-edges -S $program_ll -o $program_ll
+    $OPT -load $DCE_LIB -vssa -S $program_ll -o $program_ll
+    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./input/before -disable-output
 
-    $OPT -stats -load $DCE_LIB -dead-code-elimination -S $INPUT_IR -o $INPUT_IR
-    $OPT -dot-cfg $INPUT_IR -cfg-dot-filename-prefix=./input/after -disable-output
+    $OPT -stats -load $DCE_LIB -dead-code-elimination -S $program_ll -o $program_ll
+    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./input/after -disable-output
 fi
