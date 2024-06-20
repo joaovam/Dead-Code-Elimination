@@ -7,10 +7,7 @@ then
     exit 1
 else
     LLVM_INSTALL_DIR="/usr/lib/llvm-8/build"
-    suffix=".dylib"
-    if [[$("uname -s") == "Linux" ]]; then
-        suffix=".so"
-    fi
+    suffix=".so"
 
     CLANG=$LLVM_INSTALL_DIR/Release/bin/clang
     OPT=$LLVM_INSTALL_DIR/Release/bin/opt
