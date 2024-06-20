@@ -29,12 +29,11 @@ class DeadCodeElimination: public FunctionPass{
         NONE
     };
     static char ID;
-    DeadCodeAnalysis() : FunctionPass(ID) {}
+    DeadCodeElimination() : FunctionPass(ID) {}
     virtual ~DeadCodeElimination(){}
     virtual bool runOnFunction(Function &F);
-    virtual void getAnalysisUsage(AnalysisUsage &AU)const;
-    
-    private:
+    virtual void getAnalysisUsage(AnalysisUsage &AU) const;
+
     std::vector<std::pair<ICmpInst*, PathToDelete>>instsToDelete;
     PathToDelete solveICmpInstruction(ICmpInst* I, InterProceduralRA<Cousot> &ra);
     void deleteInstructions();
