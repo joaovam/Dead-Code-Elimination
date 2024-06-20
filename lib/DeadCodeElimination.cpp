@@ -123,7 +123,7 @@ void DeadCodeElimination::deleteInstructions(){
 
 
 bool DeadCodeElimination::runOnFunction(Function &f){//returns if anything changed
-
+    InterProceduralRA<Cousot>::ID=0;
     InterProceduralRA<Cousot> &ra = getAnalysis<InterProceduralRA<Cousot>>();
 
 
