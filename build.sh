@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LLVM_INSTALL_DIR="/usr/lib/llvm-8/build"
+LLVM_INSTALL_DIR=/usr/lib/llvm-8/build
 
 mkdir -p build
 BUILD_DIR=$(realpath -L ./build/)
