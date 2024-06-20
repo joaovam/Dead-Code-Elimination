@@ -21,8 +21,8 @@ else
     $CLANG -Xclang -disable-O0-optnone -S -emit-llvm $1 -o $program_ll
     $OPT -instnamer -mem2reg -break-crit-edges -S $program_ll -o $program_ll
     $OPT -load $DCE_LIB -vssa -S $program_ll -o $program_ll
-    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./input/before -disable-output
+    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./tests/before -disable-output
 
     $OPT -stats -load $DCE_LIB -dead-code-elimination -S $program_ll -o $program_ll
-    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./input/after -disable-output
+    $OPT -dot-cfg $program_ll -cfg-dot-filename-prefix=./tests/after -disable-output
 fi
