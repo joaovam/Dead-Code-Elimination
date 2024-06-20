@@ -1,0 +1,21 @@
+digraph "CFG for 'bar' function" {
+        label="CFG for 'bar' function";
+
+        Node0x20e3f40 [shape=record,label="{bb:\l  %tmp4 = icmp sge i32 0, 100\l  br i1 %tmp4, label %bb5, label %bb.bb16_crit_edge\l|{<s0>T|<s1>F}}"];
+        Node0x20e3f40:s0 -> Node0x20e47d0;
+        Node0x20e3f40:s1 -> Node0x20e4870;
+        Node0x20e4870 [shape=record,label="{bb.bb16_crit_edge:                                \l  br label %bb16\l}"];
+        Node0x20e4870 -> Node0x20e49a0;
+        Node0x20e47d0 [shape=record,label="{bb5:                                              \l  br label %bb6\l}"];
+        Node0x20e47d0 -> Node0x20e4a50;
+        Node0x20e4a50 [shape=record,label="{bb6:                                              \l  %tmp2.0 = phi i32 [ 0, %bb5 ], [ %tmp14, %bb12 ]\l  %tmp8 = icmp slt i32 %tmp2.0, 100\l  br i1 %tmp8, label %bb9, label %bb15\l|{<s0>T|<s1>F}}"];
+        Node0x20e4a50:s0 -> Node0x20e4d60;
+        Node0x20e4a50:s1 -> Node0x20e4e30;
+        Node0x20e4d60 [shape=record,label="{bb9:                                              \l  %vSSA_sigma = phi i32 [ %tmp2.0, %bb6 ]\l  %tmp11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8],\l... [4 x i8]* @.str, i32 0, i32 0), i32 %vSSA_sigma)\l  br label %bb12\l}"];
+        Node0x20e4d60 -> Node0x20e4b40;
+        Node0x20e4b40 [shape=record,label="{bb12:                                             \l  %tmp14 = add nsw i32 %vSSA_sigma, 1\l  br label %bb6\l}"];
+        Node0x20e4b40 -> Node0x20e4a50;
+        Node0x20e4e30 [shape=record,label="{bb15:                                             \l  br label %bb16\l}"];
+        Node0x20e4e30 -> Node0x20e49a0;
+        Node0x20e49a0 [shape=record,label="{bb16:                                             \l  ret i32 undef\l}"];
+}

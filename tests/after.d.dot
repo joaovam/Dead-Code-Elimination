@@ -1,0 +1,9 @@
+digraph "CFG for 'd' function" {
+        label="CFG for 'd' function";
+
+        Node0x1b79c20 [shape=record,label="{bb:\l  br label %bb.bb18_crit_edge\l}"];
+        Node0x1b79c20 -> Node0x1b79de0;
+        Node0x1b79de0 [shape=record,label="{bb.bb18_crit_edge:                                \l  br label %bb18\l}"];
+        Node0x1b79de0 -> Node0x1b79f10;
+        Node0x1b79f10 [shape=record,label="{bb18:                                             \l  ret i32 undef\l}"];
+}

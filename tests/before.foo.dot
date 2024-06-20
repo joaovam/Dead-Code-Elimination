@@ -1,0 +1,21 @@
+digraph "CFG for 'foo' function" {
+        label="CFG for 'foo' function";
+
+        Node0x2020580 [shape=record,label="{bb:\l  br label %bb2\l}"];
+        Node0x2020580 -> Node0x2020710;
+        Node0x2020710 [shape=record,label="{bb2:                                              \l  %tmp1.0 = phi i32 [ 0, %bb ], [ %tmp8, %bb13 ]\l  %tmp.0 = phi i32 [ 0, %bb ], [ %tmp15, %bb13 ]\l  %tmp4 = icmp slt i32 %tmp.0, 100\l  br i1 %tmp4, label %bb5, label %bb2.bb16_crit_edge\l|{<s0>T|<s1>F}}"];
+        Node0x2020710:s0 -> Node0x2021230;
+        Node0x2020710:s1 -> Node0x2021330;
+        Node0x2021330 [shape=record,label="{bb2.bb16_crit_edge:                               \l  br label %bb16\l}"];
+        Node0x2021330 -> Node0x2021460;
+        Node0x2021230 [shape=record,label="{bb5:                                              \l  %vSSA_sigma = phi i32 [ %tmp.0, %bb2 ]\l  %tmp8 = add nsw i32 %tmp1.0, %vSSA_sigma\l  %tmp10 = icmp sgt i32 %vSSA_sigma, 101\l  br i1 %tmp10, label %bb11, label %bb12\l|{<s0>T|<s1>F}}"];
+        Node0x2021230:s0 -> Node0x2021660;
+        Node0x2021230:s1 -> Node0x2021870;
+        Node0x2021660 [shape=record,label="{bb11:                                             \l  br label %bb16\l}"];
+        Node0x2021660 -> Node0x2021460;
+        Node0x2021870 [shape=record,label="{bb12:                                             \l  %vSSA_sigma1 = phi i32 [ %vSSA_sigma, %bb5 ]\l  br label %bb13\l}"];
+        Node0x2021870 -> Node0x2020e70;
+        Node0x2020e70 [shape=record,label="{bb13:                                             \l  %tmp15 = add nsw i32 %vSSA_sigma1, 1\l  br label %bb2\l}"];
+        Node0x2020e70 -> Node0x2020710;
+        Node0x2021460 [shape=record,label="{bb16:                                             \l  %tmp1.1 = phi i32 [ %tmp8, %bb11 ], [ %tmp1.0, %bb2.bb16_crit_edge ]\l  ret i32 %tmp1.1\l}"];
+}

@@ -1,0 +1,18 @@
+digraph "CFG for 'm' function" {
+        label="CFG for 'm' function";
+
+        Node0xd94e50 [shape=record,label="{bb:\l  br label %bb2\l}"];
+        Node0xd94e50 -> Node0xd94fe0;
+        Node0xd94fe0 [shape=record,label="{bb2:                                              \l  %tmp1.0 = phi i32 [ 0, %bb ], [ %tmp13, %bb11 ]\l  %tmp4 = icmp slt i32 %tmp1.0, 5\l  br i1 %tmp4, label %bb5, label %bb14\l|{<s0>T|<s1>F}}"];
+        Node0xd94fe0:s0 -> Node0xd95990;
+        Node0xd94fe0:s1 -> Node0xd95a60;
+        Node0xd95990 [shape=record,label="{bb5:                                              \l  %vSSA_sigma = phi i32 [ %tmp1.0, %bb2 ]\l  br label %bb5.bb10_crit_edge\l}"];
+        Node0xd95990 -> Node0xd95c10;
+        Node0xd95c10 [shape=record,label="{bb5.bb10_crit_edge:                               \l  br label %bb10\l}"];
+        Node0xd95c10 -> Node0xd95d40;
+        Node0xd95d40 [shape=record,label="{bb10:                                             \l  br label %bb11\l}"];
+        Node0xd95d40 -> Node0xd95740;
+        Node0xd95740 [shape=record,label="{bb11:                                             \l  %tmp13 = add nsw i32 %vSSA_sigma, 1\l  br label %bb2\l}"];
+        Node0xd95740 -> Node0xd94fe0;
+        Node0xd95a60 [shape=record,label="{bb14:                                             \l  ret i32 undef\l}"];
+}
